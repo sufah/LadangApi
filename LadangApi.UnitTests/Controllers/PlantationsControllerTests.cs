@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using LadangApi.Controllers;
 using LadangApi.Data;
@@ -14,23 +16,24 @@ namespace LadangApi.UnitTests.Controllers
     public class PlantationsControllerTests
     {
         [Test]
+        [Ignore("I will try later")]
         public void Get_WhenCalled_ReturnAllPlantationDetails()
         {
             // Arrange
-            var moqControl = new Mock<IPlantationDbContext>();
-
-            moqControl.Setup(x => x.Plantations)
-                .Returns();
-
-            var control = new PlantationsController(moqControl.Object);
+            var moqSet = new Mock<DbSet<Plantation>>();
             
+            var moqContext = new Mock<IPlantationDbContext>();
+
+            moqContext.Setup(x => x.Plantations)
+                .Returns(moqSet.Object);
+
+            var control = new PlantationsController(moqContext.Object);
 
             // Act
             var result = control.Get();
-            
 
             // Assert
-            Assert.That(result, Is.TypeOf<IEnumerable>());
+            Assert.That(result, Is.Not.Empty);
         }
     }
 }
