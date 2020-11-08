@@ -18,13 +18,16 @@ namespace LadangApi.UnitTests.Controllers
         {
             // Arrange
             var moqControl = new Mock<IPlantationDbContext>();
+
             moqControl.Setup(x => x.Plantations)
                 .Returns();
 
             var control = new PlantationsController(moqControl.Object);
+            
 
             // Act
             var result = control.Get();
+            
 
             // Assert
             Assert.That(result, Is.TypeOf<IEnumerable>());
