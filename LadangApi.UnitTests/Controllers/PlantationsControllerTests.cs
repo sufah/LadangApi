@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using LadangApi.Controllers;
-using LadangApi.Data;
+﻿using LadangApi.Controllers;
 using LadangApi.Interface;
 using LadangApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -16,12 +11,12 @@ namespace LadangApi.UnitTests.Controllers
     public class PlantationsControllerTests
     {
         [Test]
-        [Ignore("I will try later")]
+        //[Ignore("I will try later")]
         public void Get_WhenCalled_ReturnAllPlantationDetails()
         {
             // Arrange
             var moqSet = new Mock<DbSet<Plantation>>();
-            
+
             var moqContext = new Mock<IPlantationDbContext>();
 
             moqContext.Setup(x => x.Plantations)
